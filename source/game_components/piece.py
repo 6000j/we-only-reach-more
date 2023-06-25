@@ -19,7 +19,6 @@ class Piece:
     # Owner is a string to allow for weird stuff
     owner: str
 
-
     def __init__(self) -> None:
         # Initialising variables
         self.properties = {}

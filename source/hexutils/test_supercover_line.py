@@ -12,9 +12,9 @@ def test_get_hex_line():
     start = np.array([0, 0, 0])
     end = np.array([-1, -1, 2])
     print(hu.get_hex_line(start, end, supercover=True))
-    print(expected);
+    print(expected)
     assert(
-        hu.get_hex_line(start, end, supercover=True).sort() == expected.sort());
+        hu.get_hex_line(start, end, supercover=True).sort() == expected.sort())
 
 if __name__ == "__main__":
     test_get_hex_line()

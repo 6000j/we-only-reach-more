@@ -43,7 +43,19 @@ class Cape(pc.Piece):
 
 
     # Line of sight, field of view stuff.
-    def generate_field_of_view(self, my_location: rhex.Hex, game_state: game_state.GameState) -> List[rhex.Hex]:
+    
+    def generate_field_of_view(self, game_state: game_state.GameState) -> List[rhex.Hex]:
+        """Returns a list of the Hex locations that this Cape can see from where they currently are
+
+        Args:
+            game_state (game_state.GameState): The current GameState.
+
+        Returns:
+            List[rhex.Hex]: A list of the rhex.Hex locations that this cape can see.
+        """
+        return self.generate_field_of_view_from_point(self.location, game_state)
+    
+    def generate_field_of_view_from_point(self, my_location: rhex.Hex, game_state: game_state.GameState) -> List[rhex.Hex]:
         """Returns a list of the Hex locations that this Cape can see from a given location
 
         Args:
@@ -55,8 +67,21 @@ class Cape(pc.Piece):
         """
         pass
 
-    def can_see_location(self, my_location: rhex.Hex, goal_location: rhex.Hex, game_state: game_state.GameState) -> bool:
-        """Checks if we can see a given location from our current location
+    def can_see_location(self, goal_location: rhex.Hex, game_state: game_state.GameState) -> bool:
+        """Checks if we can see a given location from where we currently are
+        We do this by checking that we can see through all tiles between the two locations
+
+        Args:
+            goal_location (rhex.Hex): The location to check if we can see.
+            game_state (game_state.GameState): The current GameState.
+
+        Returns:
+            bool: Whether we can see the goal_location.
+        """
+        return self.can_see_location_from_point(self.location, goal_location, game_state)
+
+    def can_see_location_from_point(self, my_location: rhex.Hex, goal_location: rhex.Hex, game_state: game_state.GameState) -> bool:
+        """Checks if we can see a given location from a given location
         We do this by checking that we can see through all tiles between the two locations
 
         Args:

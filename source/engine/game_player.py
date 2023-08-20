@@ -7,7 +7,7 @@ from enum import Enum, auto
 class PlayerType(Enum):
     """The types of players
     SYSTEM (0): system player. Used for backend stuff. Don't worry about it
-    USER: User player. Played by a user.
+    USER (1): User player. Played by a user.
     """
     SYSTEM = 0
     USER = 1

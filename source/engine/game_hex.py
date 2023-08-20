@@ -17,8 +17,12 @@ class GameHex(hx.HexTile):
     rhex_coordinates: hu.rhex.Hex
 
     # Things on this hex currently
-    ground_objects: List[gc.piece.Piece] # This includes both walls and other stuff like GrueSmog. May change later
-    cape_occupants: List[gc.cape.Cape] # This is a list by technicality, mostly
+    # Why would I actually need to have two seperate lists here? What's the point?
+
+    piece_occupants: List[gc.piece.Piece]
+
+    # ground_objects: List[gc.piece.Piece] # This includes both walls and other stuff like GrueSmog. May change later
+    # cape_occupants: List[gc.cape.Cape] # This is a list by technicality, mostly
 
 
 

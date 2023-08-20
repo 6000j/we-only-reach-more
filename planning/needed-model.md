@@ -25,6 +25,8 @@
     - `get_at` or whatever, keeps track of everything. 
     - Speed again does not matter because of how infrequently we should actually be updating stuff?
     - Do objects inherently know their own location, or is that only calculated from the hexmap? I think it's cleaner for this to be calculated through the hexmap?
+        - Update: lmao no
+        - Specifically, shuffling stuff around the hexmap is far harder than simply making a new hexmap each time from a list of objects.
     - Hex management should probably be coded in a way that makes it functionally just a library. This is the first thing to make.
 - Players probably?
 

@@ -3,7 +3,7 @@ from typing import List, Set, Dict, Tuple
 
 import engine
 import game_components as gc
-
+import numpy as np
 
 class GameState:
     """This stores the entire current known gamestate
@@ -16,10 +16,10 @@ class GameState:
 
     # Map:
     map: engine.game_map.GameMap
-    # These two are here instead of being tracked in the game_map, because it means we don't have to send over
-    # the game_map when we serialise the game_state for networking
-    map_height: int 
-    map_width: int
+    # This is a l
+    map_coordinates: np.array
+    # map_height: int 
+    # map_width: int
 
 
     # Turn/phase:
@@ -43,10 +43,12 @@ class GameState:
             engine.game_engine.GameMap: The GameMap corresponding to the pieces we know about
         """
         # Create the map
-        temp_map: engine.game_map.GameMap = engine.game_map.create_map_of_size(self.map_height, self.map_width)
+
+        temp_map: engine.game_map.GameMap = engine.game_map.create_map_from_coordinates(self.map_coordinates)
 
         for pc in self.pieces:
-            temp_map[]
+            (temp_map[np.array(pc.location)]).piece_occupants.append(pc)
+
         
 
     def update_map(self) -> None:
